@@ -1,8 +1,8 @@
 local Cebola = {}
 local didi   = require 'options/YouWanted'
 
-time = 50
-stop = 100
+time = 260
+stop = time
 Cebola.x = 0
 Cebola.cust = 400
 function Cebola:buy(x,y,key)
@@ -16,6 +16,7 @@ function Cebola:buy(x,y,key)
 					Cebola.x = Cebola.x + 1
 				else
 					didi.money = didi.money - Cebola.cust
+					time = time - 10
 					Cebola.x = Cebola.x + 1
 					Cebola.cust = Cebola.cust + (Cebola.x * 25)
 				end
@@ -27,7 +28,10 @@ end
 --AutoClick -- Aqui Mano
 function Cebola:auto(dt)
 	stop = stop - (100 * dt)
-	didi:
+	if stop < 0 then
+		didi:click(dt,Cebola.x)
+		stop = time
+	end
 end
 
 function Cebola:draw()
