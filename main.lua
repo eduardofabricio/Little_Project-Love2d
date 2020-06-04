@@ -3,9 +3,11 @@ require 'conf'
 local loja   = require 'mercadinho/loja'
 local button = require 'options/button_click'
 local dindi  = require 'options/YouWanted'
+local anim8 = require 'animation'
+anim = anim8:click()
 
 function love.load()
-
+	anim:load()
 end
 
 function love.mousepressed(x,y,key)
@@ -15,6 +17,7 @@ end
 
 function love.update(dt)
 	loja:auto(dt)
+	anim:update(dt)
 end
 
 function love.draw()

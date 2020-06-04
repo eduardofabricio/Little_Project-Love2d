@@ -1,5 +1,6 @@
 local dindi  = require 'options/YouWanted'
 local anim8  = require 'animation'
+anim = anim8:click()
 
 local Button = {}
 
@@ -18,8 +19,7 @@ end
 
 function Button:draw()
 	--Código de Animação do Button or Click
-	love.graphics.draw(img) -- Não ligue para isso
-	--nem sei por que você está olhando para isso
+	anim.anim:draw(anim.img, 50, 40, 0, 1, 1)
 	--love.graphics.setColor(0,0,100)
 	--love.graphics.rectangle("fill", 50,40, 50,50)
 end
